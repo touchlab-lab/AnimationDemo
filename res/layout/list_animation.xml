@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ListView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/listView"
+            android:layoutAnimation="@anim/layout_animation_table"
+            android:layout_weight="1"/>
+
+    <Button
+            android:id="@+id/addRow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Row"/>
+
+</LinearLayout>
