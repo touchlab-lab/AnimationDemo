@@ -7,10 +7,10 @@
         xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout
             android:id="@+id/formBlock"
-
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:background="#009900"
+            android:layoutAnimation="@anim/layout_animation_table"
             android:orientation="vertical">
         <TextView
                 android:layout_width="fill_parent"
@@ -32,5 +32,18 @@
                 android:layout_height="wrap_content"/>
 
     </LinearLayout>
+
+    <Button
+            android:id="@+id/showPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Show Password"/>
+
+    <Button
+            android:id="@+id/addRemovePassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remove/Add Password"/>
+
 
 </LinearLayout>

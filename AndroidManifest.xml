@@ -3,7 +3,7 @@
       package="com.example"
       android:versionCode="1"
       android:versionName="1.0">
-    <application android:label="AnimationDemo" android:icon="@drawable/icon">
+    <application android:label="AnimationDemo" android:icon="@drawable/icon" android:debuggable="true">
         <activity android:name="MyActivity"
                   android:label="@string/app_name">
             <intent-filter>
@@ -13,5 +13,12 @@
         </activity>
         <activity android:name=".ListAnimation"/>
         <activity android:name=".FormAnimation"/>
+        <activity android:name=".ActivityTransition"/>
+        <activity android:name=".ViewAnimation"/>
+        <activity android:name=".ViewAnimationClipped"/>
+        <activity android:name=".ViewScaleExample"/>
+        <activity android:name=".MultipleMixedAnimations"/>
+        <activity android:name=".FrameAnimation"/>
+        <activity android:name=".FormLayoutAnimation"/>
     </application>
 </manifest> 

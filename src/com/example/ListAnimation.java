@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -28,7 +29,7 @@ public class ListAnimation extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_animation);
 
-        final String[] vals = {"Red", "Green"};
+        final String[] vals = {"Red", "Green", "Blue", "Sneakers"};
         final ArrayAdapter<String> stringArrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, new ArrayList(Arrays.asList(vals)));
         listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(stringArrayAdapter);
@@ -38,14 +39,11 @@ public class ListAnimation extends Activity
             public void onClick(View view)
             {
                 final ArrayAdapter<String> adapter = (ArrayAdapter) listView.getAdapter();
-                final int count = adapter.getCount();
-                List<String> asdf = new ArrayList<String>();
-                for(int i=0; i<count; i++)
-                {
-                    asdf.add(adapter.getItem(i));
-                }
-                asdf.add(Long.toString(System.currentTimeMillis()));
-                listView.setAdapter(new ArrayAdapter<String>(ListAnimation.this, android.R.layout.simple_list_item_1, asdf));
+
+//                listView.setLayoutAnimation(AnimationUtils.loadLayoutAnimation(ListAnimation.this, R.anim.layout_animation_table));
+                final ArrayAdapter adapter1 = (ArrayAdapter) listView.getAdapter();
+                adapter1.add(Long.toString(System.currentTimeMillis()));
+                adapter1.notifyDataSetChanged();
             }
         });
     }

@@ -1,6 +1,7 @@
 package com.example;
 
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Interpolator;
@@ -15,25 +16,47 @@ import android.widget.LinearLayout;
  */
 public class ViewGroupResizeAnimation
 {
-    int guesstimatedSize;
+    int toHeight;
     protected int duration;
     protected Handler handler;
     protected ViewGroup.LayoutParams layoutParams;
     private Interpolator interpolator;
     private View parent;
+    private ResizeRunnable runnable;
 
-    public ViewGroupResizeAnimation(View parent, int duration, int guesstimatedSize)
+    public ViewGroupResizeAnimation(View parent, int duration)
     {
         this.parent = parent;
         layoutParams = parent.getLayoutParams();
         this.duration = duration;
-        this.guesstimatedSize = guesstimatedSize;
+        toHeight = parent.getHeight();
         handler = new Handler();
     }
 
-    public void runAnimation(boolean adding)
+    public synchronized void runAnimation(int toSize)
     {
-        handler.post(new ResizeRunnable(parent, adding));
+        this.toHeight = toSize;
+
+        if(runnable == null)
+        {
+            runnable = new ResizeRunnable();
+            handler.post(runnable);
+        }
+        else
+        {
+            runnable.init();
+        }
+    }
+
+    public int getToHeight()
+    {
+        return toHeight;
+    }
+
+    private synchronized void closeAnimation()
+    {
+        parent.setLayoutParams(layoutParams);
+        runnable = null;
     }
 
     public Interpolator getInterpolator()
@@ -50,19 +73,18 @@ public class ViewGroupResizeAnimation
     {
         private long startTime;
         private long refreshTime = 50;
-        private View parent;
-        private boolean adding;
         private int startHeight;
 
-
-        protected ResizeRunnable(View parent, boolean adding)
+        public void init()
         {
-            this.parent = parent;
-            this.adding = adding;
             startTime = System.currentTimeMillis();
             startHeight = parent.getHeight();
+        }
 
+        protected ResizeRunnable()
+        {
             parent.setLayoutParams(new LinearLayout.LayoutParams(layoutParams.width, parent.getHeight()));
+            init();
         }
 
         public void run()
@@ -70,7 +92,7 @@ public class ViewGroupResizeAnimation
             final long elapsed = System.currentTimeMillis() - startTime;
             if(elapsed >= duration)
             {
-                parent.setLayoutParams(layoutParams);
+                closeAnimation();
                 return;//Done
             }
 
@@ -78,8 +100,12 @@ public class ViewGroupResizeAnimation
             if(interpolator != null)
                 timelinePoint = interpolator.getInterpolation(timelinePoint);
 
+            int guesstimatedSize = toHeight - startHeight;
+//            final int newHeight = adding ? (startHeight + (int) (timelinePoint * guesstimatedSize)) : (startHeight - (int) (timelinePoint * guesstimatedSize));
 
-            final int newHeight = adding ? (startHeight + (int) (timelinePoint * guesstimatedSize)) : (startHeight - (int) (timelinePoint * guesstimatedSize));
+            final int newHeight = startHeight + (int) (timelinePoint * guesstimatedSize);
+            Log.i("asdf", "guesstimatedSize: "+ guesstimatedSize +"/timelinePoint: "+ timelinePoint +"/newHeight: "+ newHeight);
+
             parent.setLayoutParams(new LinearLayout.LayoutParams(layoutParams.width, newHeight));
             handler.postDelayed(this, refreshTime);
         }

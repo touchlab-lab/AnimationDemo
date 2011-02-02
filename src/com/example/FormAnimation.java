@@ -22,6 +22,7 @@ import android.widget.LinearLayout;
 public class FormAnimation extends Activity
 {
     public static final int VIEW_ID = 987777;
+    public static final int VIEW_ID2 = 987778;
     private Handler handler;
     private ViewGroup formBlock;
     private long startTime;
@@ -58,7 +59,11 @@ public class FormAnimation extends Activity
 
         formBlock = (ViewGroup)findViewById(R.id.formBlock);
 
-        final ViewGroupResizeHierarchyChangeListener resizeAnimation = new ViewGroupResizeHierarchyChangeListener(50, 1200, formBlock);
+        handler.postDelayed(new Runnable()
+        {
+            public void run()
+            {
+                final ViewGroupResizeHierarchyChangeListener resizeAnimation = new ViewGroupResizeHierarchyChangeListener(formBlock, 700);
         resizeAnimation.setInterpolator(new AccelerateInterpolator());
         formBlock.setOnHierarchyChangeListener(resizeAnimation);
 
@@ -79,6 +84,20 @@ public class FormAnimation extends Activity
                 formBlock.addView(editText, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
             }
         }, 500);
+
+                handler.postDelayed(new Runnable()
+        {
+            public void run()
+            {
+                final EditText editText = new EditText(FormAnimation.this);
+                editText.setId(VIEW_ID2);
+                formBlock.addView(editText, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+            }
+        }, 800);
+            }
+        }, 100);
+
+
 
 
 //        startTime = System.currentTimeMillis();

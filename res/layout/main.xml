@@ -4,11 +4,20 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     >
-<TextView  
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:text="Hello World, MyActivity"
-    />
+
+<Button
+            android:id="@+id/frameAnimation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Frame Animation"/>
+
+    <Button
+                android:id="@+id/activityTransition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Activity Transition"/>
+
+
     <Button
             android:id="@+id/listAnim"
             android:layout_width="wrap_content"
@@ -16,10 +25,64 @@
             android:text="List Animation"/>
 
     <Button
+            android:id="@+id/formLayoutAnim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Form Layout Animation"/>
+
+     <Button
+            android:id="@+id/viewAnimation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="View Animation"/>
+
+    <Button
+            android:id="@+id/viewAnimationClipped"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="View Animation Clipped"/>
+
+    <Button
+            android:id="@+id/multipleMixed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Multiple Mixed"/>
+
+        <Button
+            android:id="@+id/viewScaleExample"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="View Scale Example"/>
+
+    <Button
             android:id="@+id/formAnim"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Form Animation"/>
+
+
+    <Button
+            android:id="@+id/startTransition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text="Start Transition"/>
+
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:src="@drawable/transition"
+            android:id="@+id/transitionImage"/>
+
+
+
+
+
+
+
+
+
 
 </LinearLayout>
 

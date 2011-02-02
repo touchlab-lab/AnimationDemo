@@ -16,9 +16,9 @@
 
 <set xmlns:android="http://schemas.android.com/apk/res/android" android:interpolator="@android:anim/accelerate_interpolator">
     <translate android:fromXDelta="100%p" android:toXDelta="0"
-        android:duration="200" android:startOffset="200"/>
+        android:duration="200" android:startOffset="12000"/>
     <alpha
         android:fromAlpha="0"
         android:toAlpha="1"
-            android:duration="200"/>
+            android:duration="200" android:startOffset="12000"/>
 </set>

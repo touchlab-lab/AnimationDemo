@@ -24,7 +24,7 @@ public class ViewAnimationClipped extends Activity
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.view_animation);
+        setContentView(R.layout.view_animation_clipped);
 
         handler = new Handler();
 

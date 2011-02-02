@@ -1,5 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+            android:background="#3333aa"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <Button
+                android:id="@+id/showNext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Show Next Button"/>
+        <Button
+                android:id="@+id/scaleMe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:text="Scale Me"/>
+
+
+    </LinearLayout>
+
+    <FrameLayout
+            android:background="#aaaa33"
+            android:layout_width="fill_parent"
+            android:visibility="gone"
+            android:id="@+id/scaleContainer"
+            android:layout_height="160dp">
+        <Button
+                android:id="@+id/animButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Look Here!"/>
+    </FrameLayout>
+
 
 </LinearLayout>

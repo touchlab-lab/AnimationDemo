@@ -9,7 +9,7 @@
     <FrameLayout
             android:background="#339933"
             android:layout_width="fill_parent"
-            android:layout_height="160dp"
+            android:layout_height="wrap_content"
             >
 
         <Button

@@ -1,6 +1,7 @@
 package com.example;
 
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Interpolator;
@@ -18,18 +19,30 @@ import java.util.Map;
  */
 public class ViewGroupResizeHierarchyChangeListener extends ViewGroupResizeAnimation implements ViewGroup.OnHierarchyChangeListener
 {
-    public ViewGroupResizeHierarchyChangeListener(int guesstimatedSize, int duration, View parent)
+    public ViewGroupResizeHierarchyChangeListener(View parent, int duration)
     {
-        super(parent, duration, guesstimatedSize);
+        super(parent, duration);
     }
 
     public void onChildViewAdded(View parent, View child)
     {
-        runAnimation(true);
+        final int addingHeight = findViewHeight(child);
+        runAnimation(getToHeight() + addingHeight);
     }
 
     public void onChildViewRemoved(View parent, View child)
     {
-        runAnimation(false);
+        final int addingHeight = findViewHeight(child);
+        runAnimation(getToHeight() - addingHeight);
+    }
+
+    private int findViewHeight(View child)
+    {
+        if(child.getMeasuredHeight() == 0)
+        {
+            child.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
+        }
+
+        return child.getMeasuredHeight();
     }
 }
