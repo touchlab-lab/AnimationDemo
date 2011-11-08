@@ -11,11 +11,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!-- I'm making changes -->
         <activity android:name=".ListAnimation"/>
         <activity android:name=".FormAnimation"/>
         <activity android:name=".ActivityTransition"/>
         <activity android:name=".ViewAnimation"/>
         <activity android:name=".ViewAnimationClipped"/>
+        <!-- More changes -->
         <activity android:name=".ViewScaleExample"/>
         <activity android:name=".MultipleMixedAnimations"/>
         <activity android:name=".FrameAnimation"/>
