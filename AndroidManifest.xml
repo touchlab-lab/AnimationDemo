@@ -4,6 +4,7 @@
       android:versionCode="1"
       android:versionName="1.0">
       <!-- asdf -->
+      <!-- more more more changes -->
     <application android:label="AnimationDemo" android:icon="@drawable/icon" android:debuggable="true">
         <activity android:name="MyActivity"
                   android:label="@string/app_name">
