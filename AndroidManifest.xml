@@ -3,6 +3,7 @@
       package="com.example"
       android:versionCode="1"
       android:versionName="1.0">
+      <!-- fqwefasdfasd -->
       <!-- asdf -->
       <!-- more more more changes -->
     <application android:label="AnimationDemo" android:icon="@drawable/icon" android:debuggable="true">
